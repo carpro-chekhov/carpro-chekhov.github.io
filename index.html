@@ -516,6 +516,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 /* Плашка рейтинга зелёная (просьба клиента: жёлтый читается как «троечка») */
 .pill .st{background:#2fbf71;color:#04210f}
+
+/* Карточка «до/после»: два фото рядом */
+.s-card .im.pair2{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.s-card .im.pair2 img{width:100%;height:100%;object-fit:cover}
+.s-card .im.pair2 .lb1,.s-card .im.pair2 .lb2{position:absolute;bottom:12px;padding:5px 11px;border-radius:999px;font:700 11px var(--b);letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,.7);color:#fff}
+.s-card .im.pair2 .lb1{left:12px}.s-card .im.pair2 .lb2{left:calc(50% + 12px);background:var(--acc);color:var(--accInk)}
 </style>
 </head>
 <body>
@@ -574,22 +580,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   <div class="wrap">
     <div class="head"><div><div class="num">02 · Услуги</div><h2>Наши <em>услуги</em></h2></div></div>
     <div class="svc">
-      <article class="s-card" data-rv><div class="im"><span class="svc-tag">Хит</span><img src="img/c12.jpg" alt="BMW после тонировки задней полусферы" loading="lazy"></div><div class="bd">
+      <article class="s-card" data-rv><div class="im"><span class="svc-tag">Хит</span><img src="img/s-tonirovka.jpg" alt="Kia Ceed после тонировки в боксе студии" loading="lazy" style="object-position:50% 45%"></div><div class="bd">
         <h3>Тонировка</h3><p>Плёнка 5, 15, 35, 50 и 85% всегда в наличии. Задняя полусфера, два стекла или лобовое.</p>
         <div class="pr"><span data-p="Задняя полусфера"></span><a href="#tint">Подобрать →</a></div></div></article>
-      <article class="s-card" data-rv style="--dl:.08s"><div class="im"><img src="img/c07.jpg" alt="Оклейка кузова антигравийной плёнкой" loading="lazy"></div><div class="bd">
+      <article class="s-card" data-rv style="--dl:.08s"><div class="im"><img src="img/s-okleyka.jpg" alt="Оклейка кузова антигравийной плёнкой" loading="lazy"></div><div class="bd">
         <h3>Антигравийная плёнка</h3><p>Оклейка кузова прозрачной плёнкой: защищает от сколов, песка и царапин.</p>
         <div class="pr"><span data-p="Оклейка кузова антигравийной плёнкой"></span><a href="#calc">Рассчитать →</a></div></div></article>
-      <article class="s-card" data-rv style="--dl:.16s"><div class="im"><img src="img/c09.jpg" alt="Фара после полировки" loading="lazy"></div><div class="bd">
+      <article class="s-card" data-rv style="--dl:.16s"><div class="im pair2"><img src="img/s-fary-do.jpg" alt="Фара до полировки" loading="lazy"><img src="img/s-fary-posle.jpg" alt="Фара после полировки" loading="lazy"><span class="lb1">До</span><span class="lb2">После</span></div><div class="bd">
         <h3>Полировка фар</h3><p>Мутные фары и фары после пескоструя снова прозрачные.</p>
         <div class="pr"><span data-p="Полировка фар"></span><a href="#calc">Рассчитать →</a></div></div></article>
-      <article class="s-card" data-rv><div class="im"><img src="img/c17.jpg" alt="Салон после химчистки" loading="lazy"></div><div class="bd">
+      <article class="s-card" data-rv><div class="im"><img src="img/s-himchistka.jpg" alt="Химчистка салона" loading="lazy"></div><div class="bd">
         <h3>Химчистка</h3><p>Сиденья, потолок, пол, пластик и багажник. Салон без пятен и запахов.</p>
         <div class="pr"><span data-p="Химчистка салона"></span><a href="#calc">Рассчитать →</a></div></div></article>
-      <article class="s-card" data-rv style="--dl:.08s"><div class="im"><img src="img/c02.jpg" alt="Лобовое стекло в работе" loading="lazy"></div><div class="bd">
+      <article class="s-card" data-rv style="--dl:.08s"><div class="im pair2"><img src="img/s-skoly-do.jpg" alt="Скол на стекле до ремонта" loading="lazy"><img src="img/s-skoly-posle.jpg" alt="Скол после ремонта" loading="lazy"><span class="lb1">До</span><span class="lb2">После</span></div><div class="bd">
         <h3>Ремонт сколов</h3><p>Ремонт сколов на лобовом стекле, пока они не пошли трещиной.</p>
         <div class="pr"><span data-p="Ремонт сколов на лобовом"></span><a href="#calc">Рассчитать →</a></div></div></article>
-      <article class="s-card" data-rv style="--dl:.16s"><div class="im"><img src="img/c14.jpg" alt="Антихром на зеркале" loading="lazy"></div><div class="bd">
+      <article class="s-card" data-rv style="--dl:.16s"><div class="im"><img src="img/s-antihrom.jpg" alt="Антихром: оклейка хрома чёрной плёнкой" loading="lazy" style="object-position:50% 40%"></div><div class="bd">
         <h3>Антихром</h3><p>Хромированные молдинги и детали в чёрную плёнку. Машина выглядит строже.</p>
         <div class="pr"><span data-p="Антихром"></span><a href="#calc">Рассчитать →</a></div></div></article>
     </div>
