@@ -505,13 +505,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 .tint .tabs button.ask{cursor:pointer}
 .tint .carbox{background:#16130f}
+
+/* Первый экран (по пожеланию клиента): только заголовок и калькулятор */
+.hero .wrap{align-items:center}
+.h-l h1{font-size:clamp(52px,7.4vw,112px);margin-bottom:0}
+.hero .qc{margin-top:0;max-width:none}
+.tint .tabs{grid-template-columns:repeat(6,1fr)}
+@media (max-width:1080px){.h-l h1{font-size:clamp(46px,13vw,80px)}.hero .wrap{gap:24px}}
+@media (max-width:640px){.tint .tabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
     <a href="#top" class="logo"><img class="lg-img" src="img/logo.jpg" alt="" width="40" height="40"><span>Car<b>pro</b></span></a>
-    <nav><a href="#tint">Тонировка</a><a href="#services">Услуги</a><a href="#works">Работы</a><a href="#prices">Цены</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a></nav>
+    <nav><a href="#calc">Расчёт</a><a href="#tint">Тонировка</a><a href="#services">Услуги</a><a href="#prices">Цены</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a></nav>
     <div class="r"><a class="ph-n" href="tel:+79099666339">+7 (909) 966-63-39</a><button class="btn acc" data-book>Записаться</button></div>
   </div>
 </header>
@@ -519,51 +527,30 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <main id="top">
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <!-- Фон первого экрана: затонированный кроссовер студии -->
-  <div class="hero-bg" aria-hidden="true"><img src="img/c15.jpg" alt="" fetchpriority="high"></div>
   <div class="wrap">
-    <div>
+    <div class="h-l">
       <a class="pill" href="https://yandex.ru/maps/org/240304010591/reviews/" target="_blank" rel="noopener"><span class="st">★&nbsp;5,0</span><span>39 оценок на Яндекс Картах<span class="hm"> · Чехов</span></span></a>
-      <h1>Тонировка <em>и химчистка</em></h1>
-      <p class="lead">Тонировка стёкол и фонарей, полировка и бронь фар плёнкой, химчистка салона. Быстро и недорого, но без пузырей и пыли. Чехов, ГПК Бадеево.</p>
-      <div class="promo">💸 <span>Тонировка <b>от 3 000 ₽</b>, химчистка <b>от 10 000 ₽</b></span></div>
-
-      <!-- Калькулятор. Цены в скрипте, блок PRICE (с карточки Яндекса) -->
-      <div class="qc beam" id="calc">
-        <div class="top"><b>Цена для вашей машины за 30 секунд</b><small>по прайсу студии</small></div>
-        <div class="q">Ваша машина</div>
-        <div class="seg" id="body"></div>
-        <div class="q">Что нужно машине?</div>
-        <div class="pk" id="pk"></div>
-        <div class="xt"><div class="q">Добавить по желанию</div><div class="chips" id="svcs"></div></div>
-        <div class="res">
-          <div><div class="tot" id="tot">0 ₽</div><small>точную цену назовём до начала работ</small></div>
-          <button class="btn shiny" id="calcBook">Записаться на эту сумму <span class="arr">→</span></button>
-        </div>
-      </div>
-      <div class="trust"><span class="live" id="open">Ежедневно 10–18</span><span>Мастера Валерия и Екатерина</span><span>Без пузырей и пыли</span></div>
+      <h1>Детейлинг</h1>
     </div>
-
-    <!-- Справа: само фото (фон) + один отзыв в углу -->
-    <div class="vis">
-      <img class="vis-ph" src="img/c15.jpg" alt="Кроссовер после тонировки" loading="lazy"><!-- видно только на телефоне/планшете -->
-      <span class="tag"><i></i>Работа студии</span>
-      <div class="quote"><div class="s">★★★★★</div><p>«Тот случай, когда быстро и недорого ≠ некачественно. Фары были сильно убиты пескоструем, а стали абсолютно как новые»</p><small>Виталий Г. · отзыв на Яндекс Картах</small></div>
+    <!-- Калькулятор. Цены в скрипте, блок PRICE (прайс от студии, 18.11) -->
+    <div class="qc beam" id="calc">
+      <div class="top"><b>Расчёт цены за 30 секунд</b><small>по прайсу студии</small></div>
+      <div class="q">Что нужно машине?</div>
+      <div class="pk" id="pk"></div>
+      <div class="xt"><div class="q">Добавить по желанию</div><div class="chips" id="svcs"></div></div>
+      <div class="res">
+        <div><div class="tot" id="tot">0 ₽</div><small>точную цену назовём до начала работ</small></div>
+        <button class="btn shiny" id="calcBook">Записаться на эту сумму <span class="arr">→</span></button>
+      </div>
     </div>
   </div>
 </section>
-
-<div class="mq" aria-hidden="true"><div class="t">
-  <span>Тонировка</span><span>✦</span><span>Фонари</span><span>✦</span><span>Полировка фар</span><span>✦</span><span>Бронь плёнкой</span><span>✦</span><span>Химчистка</span><span>✦</span><span>Сколы</span><span>✦</span>
-  <span>Тонировка</span><span>✦</span><span>Фонари</span><span>✦</span><span>Полировка фар</span><span>✦</span><span>Бронь плёнкой</span><span>✦</span><span>Химчистка</span><span>✦</span><span>Сколы</span><span>✦</span>
-</div></div>
 
 <!-- ===== ПРИМЕРКА ТОНИРОВКИ. Проценты — в скрипте, блок TINT ===== -->
 <section class="tint" id="tint">
   <div class="wrap">
     <div class="head">
       <div><div class="num">01 · Примерка</div><h2>Какую тонировку <em>выбрать</em></h2></div>
-      <p class="sub">Нажмите процент, покажем его на стёклах. Чем меньше процент, тем темнее плёнка. Тёмные проценты только на задние стёкла, на передние по закону атермалка.</p>
     </div>
     <div class="carbox" data-rv="zoom">
       <!-- Фото-пример (Unsplash, свободная лицензия). Когда студия пришлёт своё фото машины сбоку — заменить и перерисовать стёкла -->
@@ -582,122 +569,47 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <!-- ===== УСЛУГИ ===== -->
 <section id="services" class="alt">
   <div class="wrap">
-    <div class="head">
-      <div><div class="num">02 · Услуги</div><h2>Что делаем <em>с машиной</em></h2></div>
-      <p class="sub">Тонировка, фары и плёнка у Валерии, химчистка у Екатерины. «Девчонки знают свою работу», пишут клиенты.</p>
-    </div>
+    <div class="head"><div><div class="num">02 · Услуги</div><h2>Наши <em>услуги</em></h2></div></div>
     <div class="svc">
       <article class="s-card" data-rv><div class="im"><span class="svc-tag">Хит</span><img src="img/c12.jpg" alt="BMW после тонировки задней полусферы" loading="lazy"></div><div class="bd">
-        <h3>Тонировка стёкол</h3><p>Задняя полусфера от 5%. Плёнка ложится ровно, без пузырей, задиров и пыли.</p>
-        <div class="pr"><span data-p="Тонировка стёкол"></span><a href="#tint">Подобрать →</a></div></div></article>
-      <article class="s-card" data-rv style="--dl:.08s"><div class="im"><img src="img/c09.jpg" alt="Фара Volvo после полировки" loading="lazy"></div><div class="bd">
-        <h3>Полировка фар</h3><p>Мутные фары и фары после пескоструя снова прозрачные. Сразу можно затянуть в защитную плёнку.</p>
+        <h3>Тонировка</h3><p>Плёнка 5, 15, 35, 50 и 85% всегда в наличии. Задняя полусфера, два стекла или лобовое.</p>
+        <div class="pr"><span data-p="Задняя полусфера"></span><a href="#tint">Подобрать →</a></div></div></article>
+      <article class="s-card" data-rv style="--dl:.08s"><div class="im"><img src="img/c07.jpg" alt="Оклейка кузова антигравийной плёнкой" loading="lazy"></div><div class="bd">
+        <h3>Антигравийная плёнка</h3><p>Оклейка кузова прозрачной плёнкой: защищает от сколов, песка и царапин.</p>
+        <div class="pr"><span data-p="Оклейка кузова антигравийной плёнкой"></span><a href="#calc">Рассчитать →</a></div></div></article>
+      <article class="s-card" data-rv style="--dl:.16s"><div class="im"><img src="img/c09.jpg" alt="Фара после полировки" loading="lazy"></div><div class="bd">
+        <h3>Полировка фар</h3><p>Мутные фары и фары после пескоструя снова прозрачные.</p>
         <div class="pr"><span data-p="Полировка фар"></span><a href="#calc">Рассчитать →</a></div></div></article>
-      <article class="s-card" data-rv style="--dl:.16s"><div class="im"><img src="img/c07.jpg" alt="Бронирование кузова плёнкой" loading="lazy"></div><div class="bd">
-        <h3>Бронирование плёнкой</h3><p>Прозрачная плёнка на фары и зоны риска: защищает от сколов и песка.</p>
-        <div class="pr"><span data-p="Бронирование плёнкой"></span><a href="#calc">Рассчитать →</a></div></div></article>
-      <article class="s-card" data-rv><div class="im"><img src="img/c13.jpg" alt="Затонированный седан в боксе" loading="lazy"></div><div class="bd">
-        <h3>Тонировка фонарей</h3><p>Задние фонари и поворотники в плёнку. Машина сразу выглядит дороже.</p>
-        <div class="pr"><span data-p="Тонировка фонарей"></span><a href="#" data-photo>Прислать фото →</a></div></div></article>
-      <article class="s-card" data-rv style="--dl:.08s"><div class="im"><img src="img/c14.jpg" alt="Зеркало в матовой плёнке" loading="lazy"></div><div class="bd">
-        <h3>Оклейка элементов</h3><p>Матовая плёнка на зеркала, головное устройство, детали. Оклеиваем и мотоциклы.</p>
-        <div class="pr"><span data-p="Оклейка элементов"></span><a href="#" data-photo>Прислать фото →</a></div></div></article>
-      <article class="s-card" data-rv style="--dl:.16s"><div class="im"><img src="img/c17.jpg" alt="Салон после химчистки" loading="lazy"></div><div class="bd">
-        <h3>Химчистка салона</h3><p>Отмываем даже очень грязный тряпочный салон до состояния нового. Пятна и запахи уходят.</p>
+      <article class="s-card" data-rv><div class="im"><img src="img/c17.jpg" alt="Салон после химчистки" loading="lazy"></div><div class="bd">
+        <h3>Химчистка</h3><p>Сиденья, потолок, пол, пластик и багажник. Салон без пятен и запахов.</p>
         <div class="pr"><span data-p="Химчистка салона"></span><a href="#calc">Рассчитать →</a></div></div></article>
+      <article class="s-card" data-rv style="--dl:.08s"><div class="im"><img src="img/c02.jpg" alt="Лобовое стекло в работе" loading="lazy"></div><div class="bd">
+        <h3>Ремонт сколов</h3><p>Ремонт сколов на лобовом стекле, пока они не пошли трещиной.</p>
+        <div class="pr"><span data-p="Ремонт сколов на лобовом"></span><a href="#calc">Рассчитать →</a></div></div></article>
+      <article class="s-card" data-rv style="--dl:.16s"><div class="im"><img src="img/c14.jpg" alt="Антихром на зеркале" loading="lazy"></div><div class="bd">
+        <h3>Антихром</h3><p>Хромированные молдинги и детали в чёрную плёнку. Машина выглядит строже.</p>
+        <div class="pr"><span data-p="Антихром"></span><a href="#calc">Рассчитать →</a></div></div></article>
     </div>
   </div>
 </section>
-
-<!-- ===== РАБОТЫ ===== -->
-<section id="works">
-  <div class="wrap">
-    <div class="head">
-      <div><div class="num">03 · Работы</div><h2>Машины <em>после нас</em></h2></div>
-      <p class="sub">Реальные фото студии с Яндекс Карт. Нажмите, чтобы открыть крупно.</p>
-    </div>
-    <div class="gal" id="gal">
-      <button data-rv><img src="img/c03.jpg" alt="Kia Sportage в боксе" loading="lazy"></button>
-      <button data-rv><img src="img/c12.jpg" alt="BMW, тонировка задней полусферы" loading="lazy"></button>
-      <button data-rv><img src="img/c04.jpg" alt="Электромобиль в боксе" loading="lazy"></button>
-      <button data-rv><img src="img/c09.jpg" alt="Фара после полировки" loading="lazy"></button>
-      <button data-rv><img src="img/c15.jpg" alt="Кроссовер после тонировки" loading="lazy"></button>
-      <button data-rv><img src="img/c07.jpg" alt="Бронирование кузова плёнкой" loading="lazy"></button>
-      <button data-rv><img src="img/c13.jpg" alt="Седан после тонировки" loading="lazy"></button>
-      <button data-rv><img src="img/c17.jpg" alt="Салон после химчистки" loading="lazy"></button>
-      <button data-rv><img src="img/c06.jpg" alt="Плёнка на кузове" loading="lazy"></button>
-      <button data-rv><img src="img/c18.jpg" alt="Задний ряд после химчистки" loading="lazy"></button>
-      <button data-rv><img src="img/c08.jpg" alt="Тонировка стекла" loading="lazy"></button>
-      <button data-rv><img src="img/c01.jpg" alt="Фары в работе" loading="lazy"></button>
-    </div>
-  </div>
-</section>
-<div class="lbx" id="lbx"><img alt=""><button class="x" aria-label="Закрыть">×</button><button class="p" aria-label="Назад">‹</button><button class="n" aria-label="Вперёд">›</button></div>
 
 <!-- ===== ЦЕНЫ: строки собираются из блока PRICE в скрипте ===== -->
-<section id="prices" class="alt">
+<section id="prices">
   <div class="wrap">
     <div class="head">
-      <div><div class="num">04 · Цены</div><h2>Цены <em>студии</em></h2></div>
-      <p class="sub">«Цена/качество 500%», «дёшево и сердито», пишут клиенты. Это цены студии с Яндекс Карт.</p>
+      <div><div class="num">03 · Цены</div><h2>Цены <em>студии</em></h2></div>
     </div>
     <div class="ptabs" id="ptabs"></div>
     <div class="price" id="plist"></div>
-    <p class="pmore">Не знаете, что выбрать? <a href="#" data-photo>Пришлите фото машины</a>, подскажем и назовём цену.</p>
-    <p class="note">Итог зависит от машины и состояния. Точную сумму назовём до начала работ.</p>
-  </div>
-</section>
-
-<!-- ===== ХИМЧИСТКА ===== -->
-<section id="clean">
-  <div class="wrap night">
-    <div class="pics" data-rv="zoom">
-      <button data-g="7" aria-label="Открыть фото"><img src="img/c17.jpg" alt="Передние сиденья после химчистки" loading="lazy"></button>
-      <button data-g="9" aria-label="Открыть фото"><img src="img/c18.jpg" alt="Задний ряд после химчистки" loading="lazy"></button>
-    </div>
-    <div>
-      <div class="num">05 · Химчистка</div>
-      <h2>Салон, в который <em>было страшно сесть</em></h2>
-      <p class="sub">Так клиент описал свою рабочую машину до химчистки. Екатерина отмыла её полностью, без пятен и посторонних запахов.</p>
-      <ul class="tl">
-        <li><b>Утром</b><span>Сдаёте машину в удобный день, подберём время даже в плотный график</span></li>
-        <li><b>Днём</b><span>Чистим сиденья, потолок, пол, пластик и багажник</span></li>
-        <li><b>Вечером</b><span>Забираете машину с чистым салоном</span></li>
-      </ul>
-      <button class="btn shiny" data-book-clean>Записаться на химчистку <span class="arr">→</span></button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== МАСТЕРА ===== -->
-<section class="alt">
-  <div class="wrap master">
-    <div class="im" data-rv="left"><img src="img/c05.jpg" alt="Мастер с тонировочной плёнкой" loading="lazy"></div>
-    <div>
-      <div class="num">06 · Мастера</div>
-      <h2>Валерия <em>и Екатерина</em></h2>
-      <p class="sub">«У девчонок руки золотые», «доверяю на все 100%, ни капли не переживаю, когда моё авто там». Почти в каждом отзыве клиенты называют мастеров по имени.</p>
-      <div class="stats">
-        <div><b>5,0</b><span>рейтинг на Яндексе</span></div>
-        <div><b>39</b><span>оценок клиентов</span></div>
-        <div><b>10–18</b><span>ежедневно</span></div>
-      </div>
-      <div class="perks">
-        <div class="perk"><i>✨</i><h4>Без пузырей</h4><p>Плёнка ровно, без задиров и пыли. Это отмечают в отзывах про тонировку.</p></div>
-        <div class="perk"><i>💡</i><h4>Чистый бокс</h4><p>Порядок и хорошее освещение, работаем аккуратно.</p></div>
-        <div class="perk"><i>🗓</i><h4>Удобное время</h4><p>Подбираем дату под вас, даже если всё расписано.</p></div>
-        <div class="perk"><i>💬</i><h4>Всё объясним</h4><p>Ответим на вопросы и подскажем, что лучше для вашей машины.</p></div>
-      </div>
-    </div>
+        <p class="note">Итог зависит от машины и состояния. Точную сумму назовём до начала работ.</p>
   </div>
 </section>
 
 <!-- ===== ОТЗЫВЫ (реальные, с Яндекс Карт) ===== -->
-<section id="reviews">
+<section id="reviews" class="alt">
   <div class="wrap">
     <div class="head">
-      <div><div class="num">07 · Отзывы</div><h2>Что пишут <em>на Яндекс Картах</em></h2></div>
-      <p class="sub">Чаще всего: «быстро», «качественно», «недорого».</p>
+      <div><div class="num">04 · Отзывы</div><h2>Что пишут <em>на Яндекс Картах</em></h2></div>
     </div>
     <div class="rev">
       <div class="rv" data-rv><div class="s">★★★★★</div><p>Тот случай, когда быстро и недорого ≠ некачественно. Фары были сильно убиты пескоструем. Валерии удалось добиться идеального гладкого стекла. Фары абсолютно как новые. Сразу же затянули в плёнку.</p><div class="a"><i>В</i><div>Виталий Г.<small>Полировка и бронь фар</small></div></div></div>
@@ -711,24 +623,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   </div>
 </section>
 
-<!-- ===== FAQ ===== -->
-<section class="alt">
-  <div class="wrap">
-    <div class="num">08 · Вопросы</div><h2>Частые <em>вопросы</em></h2>
-    <div class="faq">
-      <details><summary>Какую тонировку можно по закону?</summary><p>Задние стёкла можно тонировать любым процентом. На лобовое и передние боковые по ГОСТу можно только светлую плёнку, например атермальную. Подскажем, что подойдёт вашей машине.</p></details>
-      <details><summary>Сколько времени занимает тонировка?</summary><p>Задняя полусфера обычно занимает несколько часов. Точное время скажем при записи, начинаем вовремя, как договорились.</p></details>
-      <details><summary>Будут пузыри или пыль под плёнкой?</summary><p>Нет. Работаем в чистом освещённом боксе, плёнку клеим аккуратно. Клиенты отмечают: без пузырей, задиров и пыли.</p></details>
-      <details><summary>Можно восстановить фары после пескоструя?</summary><p>Да. Полируем до гладкого прозрачного стекла и сразу можем затянуть в защитную плёнку, чтобы фары дольше оставались как новые.</p></details>
-      <details><summary>Кому писать: тонировка или химчистка?</summary><p>Тонировка, фары и плёнка: Валерия, +7 (909) 966-63-39. Химчистка: Екатерина, +7 (977) 560-20-78. Или нажмите «Записаться», окно само подскажет.</p></details>
-    </div>
-  </div>
-</section>
-
 <!-- ===== КОНТАКТЫ ===== -->
 <section id="contacts">
   <div class="wrap">
-    <div class="head"><div><div class="num">09 · Контакты</div><h2>Ждём <em>в Чехове</em></h2></div></div>
+    <div class="head"><div><div class="num">05 · Контакты</div><h2>Ждём <em>в Чехове</em></h2></div></div>
     <div class="contact">
       <div class="box beam" data-rv>
         <div class="crow"><small>Тонировка, фары, плёнка · Валерия</small><a href="tel:+79099666339">+7 (909) 966-63-39</a></div>
@@ -763,18 +661,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   </div>
 </section>
 
-<!-- ===== ФИНАЛ ===== -->
-<section class="final">
-  <div class="wrap">
-    <div class="num" style="justify-content:center">Запись</div>
-    <h2>Быстро, недорого <em>и качественно</em></h2>
-    <p class="sub">Напишите марку машины и что нужно сделать, можно с фото. Ответим, назовём цену и свободное время.</p>
-    <div class="btns">
-      <button class="btn shiny big" data-book>Записаться онлайн <span class="arr">→</span></button>
-      <a class="btn gh big" href="tel:+79099666339">Позвонить</a>
-    </div>
-  </div>
-</section>
 </main>
 
 <footer><div class="wrap"><span>© Carpro · тонировка и химчистка в Чехове</span><span>Тонировка · Фары · Плёнка · Химчистка</span></div></footer>
@@ -816,67 +702,65 @@ const WA_E='79775602078';   // Екатерина: химчистка
 const wa=(n,t)=>'https://wa.me/'+n+'?text='+encodeURIComponent(t);
 const HELLO='Здравствуйте! Я с сайта, хочу записаться. Моя машина: ';
 
-/* ===== PRICE: цены «от» с карточки Яндекса. [название, цена, группа, пояснение, 1 = зависит от размера машины]. 0 = «по фото» ===== */
+/* ===== PRICE: прайс от студии (прислали 18.11). [название, цена, группа, пояснение, 1 = цена «от»] ===== */
 const SVC=[
-  ['Тонировка стёкол',3000,'Тонировка и плёнка','Задняя полусфера, любой процент',0],
-  ['Бронирование плёнкой',4000,'Тонировка и плёнка','Фары и зоны риска',0],
-  ['Тонировка фонарей',0,'Тонировка и плёнка','Задние фонари, поворотники',0],
-  ['Оклейка элементов',0,'Тонировка и плёнка','Матовая плёнка, детали, мото',0],
-  ['Полировка фар',4000,'Фары и стёкла','Мутные фары и после пескоструя',0],
-  ['Ремонт сколов на лобовом',1500,'Фары и стёкла','Чтобы скол не пошёл трещиной',0],
-  ['Химчистка салона',15000,'Химчистка','Генеральная: сиденья, потолок, пол, пластик',1],
-  ['Предпродажная химчистка',10000,'Химчистка','Чтобы машину купили быстрее',1],
-  ['Поддерживающая уборка',4000,'Химчистка','Когда салон уже чистый',1],
+  ['Задняя полусфера',6000,'Тонировка','Все задние стёкла',0],
+  ['Два стекла',3000,'Тонировка','Например, передние боковые',0],
+  ['Лобовое стекло',4000,'Тонировка','',0],
+  ['Оклейка кузова антигравийной плёнкой',15000,'Плёнка','Защита от сколов и песка',1],
+  ['Антихром',5000,'Плёнка','Хром в чёрную плёнку',1],
+  ['Полировка фар',4500,'Фары и стёкла','',1],
+  ['Ремонт сколов на лобовом',1000,'Фары и стёкла','',1],
+  ['Химчистка салона',10000,'Химчистка','Сиденья, потолок, пол, пластик, багажник',1],
 ];
 const P=n=>SVC.find(s=>s[0]===n);
 const CLEAN=n=>P(n)[2]==='Химчистка';
-/* Размер машины: множитель только для химчистки (флаг 1). Подставить реальный, когда пришлют */
-const BODY=[['Седан',1],['Кроссовер',1.15],['Внедорожник',1.3]];
+/* Готовые варианты в калькуляторе */
 const PK=[
-  ['Тонировка','Задняя полусфера',['Тонировка стёкол']],
-  ['Фары как новые','Полировка и бронь плёнкой',['Полировка фар','Бронирование плёнкой'],'Хит'],
-  ['Чистый салон','Генеральная химчистка',['Химчистка салона']],
+  ['Задняя полусфера','Тонировка задних стёкол',['Задняя полусфера']],
+  ['Тонировка по кругу','Задняя полусфера и два стекла',['Задняя полусфера','Два стекла'],'Хит'],
+  ['Химчистка','Салон целиком',['Химчистка салона']],
 ];
-const EX=['Тонировка стёкол','Полировка фар','Бронирование плёнкой','Ремонт сколов на лобовом','Поддерживающая уборка'];
-let bd=0,pk=1,shown=0,calcMsg='',calcClean=false;const ex=new Set();
+const EX=['Лобовое стекло','Полировка фар','Антихром','Ремонт сколов на лобовом'];
+let pk=1,shown=0,calcMsg='',calcClean=false;const ex=new Set();
 const fmt=n=>n.toLocaleString('ru-RU').replace(/ |,/g,' ');
-const price=n=>{const s=P(n);return Math.round(s[1]*(s[4]?BODY[bd][1]:1)/100)*100};
+const price=n=>P(n)[1];
 const items=()=>[...new Set([...PK[pk][2],...ex])];
 const pkSum=p=>p[2].reduce((a,n)=>a+price(n),0);
-function drawPk(){$('pk').innerHTML='';PK.forEach((p,i)=>{const b=document.createElement('button');b.innerHTML=(p[3]?`<i>${p[3]}</i>`:'')+`<b>${p[0]}</b><small>${p[1]}</small><span>${fmt(pkSum(p))} ₽</span>`;b.className=i===pk?'on':'';b.onclick=()=>{pk=i;drawPk();drawEx();calc()};$('pk').appendChild(b)})}
-BODY.forEach((x,i)=>{const b=document.createElement('button');b.textContent=x[0];b.className=i===bd?'on':'';b.onclick=()=>{bd=i;[...$('body').children].forEach((y,j)=>y.classList.toggle('on',j===i));drawPk();drawEx();calc()};$('body').appendChild(b)});
+const isFrom=it=>it.some(n=>P(n)[4]);
+function drawPk(){$('pk').innerHTML='';PK.forEach((p,i)=>{const b=document.createElement('button');b.innerHTML=(p[3]?`<i>${p[3]}</i>`:'')+`<b>${p[0]}</b><small>${p[1]}</small><span>${isFrom(p[2])?'от ':''}${fmt(pkSum(p))} ₽</span>`;b.className=i===pk?'on':'';b.onclick=()=>{pk=i;drawPk();drawEx();calc()};$('pk').appendChild(b)})}
 function drawEx(){$('svcs').innerHTML='';EX.forEach(n=>{const inPk=PK[pk][2].includes(n),b=document.createElement('button');
-  b.textContent=inPk?n+' · в наборе':n+' +'+fmt(price(n));b.className=inPk?'inc':(ex.has(n)?'on':'');b.disabled=inPk;
+  b.textContent=inPk?n+' · в наборе':n+' +'+(P(n)[4]?'от ':'')+fmt(price(n));b.className=inPk?'inc':(ex.has(n)?'on':'');b.disabled=inPk;
   b.onclick=()=>{ex.has(n)?ex.delete(n):ex.add(n);b.classList.toggle('on',ex.has(n));calc()};$('svcs').appendChild(b)})}
 function calc(){
-  const it=items(),sum=it.reduce((a,n)=>a+price(n),0);
-  anim(sum);calcClean=it.every(CLEAN);
-  calcMsg=`Здравствуйте! Я с сайта. ${BODY[bd][0]}, хочу «${PK[pk][0]}»: ${it.map(s=>s.toLowerCase()).join(', ')} ≈ ${fmt(sum)} ₽. Моя машина: `;
+  const it=items(),sum=it.reduce((a,n)=>a+price(n),0),pre=isFrom(it)?'от ':'';
+  anim(sum,pre);calcClean=it.every(CLEAN);
+  calcMsg=`Здравствуйте! Я с сайта. Хочу: ${it.map(s=>s.toLowerCase()).join(', ')}, ${pre}${fmt(sum)} ₽. Моя машина: `;
 }
-function anim(to){
+function anim(to,pre){
   const from=shown,t0=performance.now(),dur=matchMedia('(prefers-reduced-motion:reduce)').matches?0:450;
-  const step=t=>{const q=dur?Math.min(1,(t-t0)/dur):1,e=1-Math.pow(1-q,3);shown=Math.round(from+(to-from)*e);$('tot').textContent='≈ '+fmt(shown)+' ₽';if(q<1)requestAnimationFrame(step)};
+  const step=t=>{const q=dur?Math.min(1,(t-t0)/dur):1,e=1-Math.pow(1-q,3);shown=Math.round(from+(to-from)*e);$('tot').textContent=pre+fmt(shown)+' ₽';if(q<1)requestAnimationFrame(step)};
   requestAnimationFrame(step);
 }
 drawPk();drawEx();shown=pkSum(PK[pk]);calc();
 
 /* Прайс: вкладки по группам */
 const GR=[...new Set(SVC.map(s=>s[2]))];
-const pv=s=>s[1]?`<small>от</small>${fmt(s[1])} ₽`:'<small>по фото</small>';
+const pv=s=>(s[4]?'<small>от</small>':'')+fmt(s[1])+' ₽';
 function showGr(g){[...$('ptabs').children].forEach(b=>b.classList.toggle('on',b.textContent===g));
   $('plist').innerHTML=SVC.filter(s=>s[2]===g).map(s=>`<div class="row"><div><b>${s[0]}</b>${s[3]?`<p>${s[3]}</p>`:''}</div><div class="v">${pv(s)}</div></div>`).join('')}
 GR.forEach(g=>{const b=document.createElement('button');b.textContent=g;b.onclick=()=>showGr(g);$('ptabs').appendChild(b)});
 showGr(GR[0]);
-document.querySelectorAll('[data-p]').forEach(el=>{const s=P(el.dataset.p);if(s)el.textContent=s[1]?'от '+fmt(s[1])+' ₽':'по фото'});
+document.querySelectorAll('[data-p]').forEach(el=>{const s=P(el.dataset.p);if(s)el.textContent=(s[4]?'от ':'')+fmt(s[1])+' ₽'});
 
 /* ===== TINT: примерка. [подпись, затемнение 0–1, что видно, что по закону, 1 = задние] ===== */
 let tintSel='5%';
-(()=>{const T=[['5%',.93,'Салон не просматривается вообще','Так можно только на задние стёкла',1],['15%',.84,'Виден силуэт, но не лицо','Так можно только на задние стёкла',1],['20%',.77,'Видны черты лица сидящего внутри','Так можно только на задние стёкла',1],['35%',.62,'Салон хорошо виден, классический вариант','Так можно только на задние стёкла',1],['50%',.42,'Лёгкое затемнение, почти прозрачно','Так можно только на задние стёкла',1],['Атермалка',.28,'Почти прозрачная плёнка, не пропускает жару','Можно на лобовое и передние по ГОСТу',0]];
+(()=>{const T=[['5%',.93,'Салон не просматривается вообще','Так можно только на задние стёкла',1],['15%',.84,'Виден силуэт, но не лицо','Так можно только на задние стёкла',1],['35%',.62,'Салон хорошо виден, классический вариант','Так можно только на задние стёкла',1],['50%',.42,'Лёгкое затемнение, почти прозрачно','Так можно только на задние стёкла',1],['85%',.16,'Почти прозрачная плёнка','Для передних стёкол подскажем, что пройдёт по ГОСТу',0]];
 const tabs=$('ttabs'),wf=$('wf'),wr=$('wr');
 T.forEach((t,i)=>{const b=document.createElement('button');b.className=t[0].length>4?'wide':'';b.innerHTML=t[0]+'<small>'+(t[4]?'задние':'передние')+'</small>';b.onclick=()=>sel(i);tabs.appendChild(b)});
 const q=document.createElement('button');q.className='ask';q.innerHTML='?<small>не знаю</small>';q.onclick=()=>book('Здравствуйте! Я с сайта. Помогите выбрать тонировку, моя машина: ');tabs.appendChild(q);
 function sel(i){const t=T[i];tintSel=t[0];[...tabs.querySelectorAll('button:not(.ask)')].forEach((b,j)=>b.classList.toggle('on',i===j));
- [wf,wr].forEach(w=>{w.setAttribute('fill',t[4]?'#0a0b0d':'#5b8fd6');w.setAttribute('fill-opacity',t[1])});
+ [wf,wr].forEach(w=>{w.setAttribute('fill','#0a0b0d');w.setAttribute('fill-opacity',t[1])});
  $('lr').textContent=t[0];$('tt').textContent=t[0]+(t[4]?' светопропускания':'');$('td').textContent=t[2];const l=$('tl');l.textContent=t[3];l.className='law '+(t[4]?'back':'ok')}
 sel(0)})();
 $('tintBook').onclick=()=>book(`Здравствуйте! Я с сайта. Хочу тонировку ${tintSel}. Сколько будет стоить? Моя машина: `);
@@ -886,21 +770,6 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 document.querySelectorAll('[data-rv]').forEach(el=>io.observe(el));
 const po=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('off',!e.isIntersecting)));
 document.querySelectorAll('.mq,#map').forEach(el=>po.observe(el));
-
-/* Лайтбокс галереи (кнопки с data-g открывают фото галереи по номеру) */
-const gal=[...document.querySelectorAll('#gal img')],lbx=$('lbx'),lbi=lbx.querySelector('img');let gi=0;
-const show=i=>{gi=(i+gal.length)%gal.length;lbi.src=gal[gi].src;lbi.alt=gal[gi].alt;lbx.classList.add('on')};
-gal.forEach((im,i)=>im.parentElement.addEventListener('click',()=>show(i)));
-document.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>show(+b.dataset.g));
-lbx.querySelector('.x').onclick=()=>lbx.classList.remove('on');
-lbx.querySelector('.p').onclick=e=>{e.stopPropagation();show(gi-1)};
-lbx.querySelector('.n').onclick=e=>{e.stopPropagation();show(gi+1)};
-lbx.addEventListener('click',e=>{if(e.target===lbx)lbx.classList.remove('on')});
-addEventListener('keydown',e=>{if(!lbx.classList.contains('on'))return;if(e.key==='Escape')lbx.classList.remove('on');if(e.key==='ArrowLeft')show(gi-1);if(e.key==='ArrowRight')show(gi+1)});
-
-/* «Открыто / закрыто» по московскому времени. График: ежедневно 10–18 */
-(()=>{const n=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Moscow'})),h=n.getHours(),o=h>=10&&h<18,el=$('open');
- el.textContent=o?'Открыто до 18:00':'Сейчас закрыто · пишите, ответим утром';el.classList.toggle('live',o)})();
 
 /* ===== Окно записи. Если запрос про химчистку — первой показываем Екатерину ===== */
 const cm=$('cm');let lastFocus=null,curMsg=HELLO;
@@ -914,7 +783,6 @@ function unbook(){cm.classList.remove('on');document.body.style.overflow='';setT
 /* Telegram по номеру не принимает готовый текст: копируем его, чтобы клиент просто вставил */
 $('cmTg').addEventListener('click',()=>{try{navigator.clipboard.writeText(curMsg)}catch(e){}$('tgNote').textContent='текст скопирован, вставьте в чат'});
 document.querySelectorAll('[data-book]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();book()}));
-document.querySelectorAll('[data-book-clean]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();book('Здравствуйте! Я с сайта, хочу записаться на химчистку. Моя машина: ',true)}));
 document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();book('Здравствуйте! Я с сайта. Пришлю фото машины, подскажите, что нужно и сколько будет стоить. Моя машина: ')}));
 $('calcBook').onclick=()=>book(calcMsg,calcClean);
 $('cmX').onclick=unbook;
