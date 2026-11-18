@@ -11,6 +11,15 @@
 <meta property="og:title" content="Carpro: тонировка и химчистка в Чехове">
 <meta property="og:image" content="https://carpro-chekhov.github.io/img/c12.jpg">
 <meta property="og:description" content="Быстро и недорого, но без пузырей и пыли. ★ 5,0 на Яндекс Картах.">
+<!-- Яндекс Метрика. Номер счётчика вписать в YM_ID (0 = выключено). Вебвизор, карта кликов -->
+<script>
+var YM_ID=0;
+if(YM_ID){(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
+ k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+ (window,document,'script','https://mc.yandex.ru/metrika/tag.js?id='+YM_ID,'ym');
+ ym(YM_ID,'init',{webvisor:true,clickmap:true,trackLinks:true,accurateTrackBounce:true});}
+function goal(n){try{if(YM_ID&&window.ym)ym(YM_ID,'reachGoal',n)}catch(e){}}
+</script>
 <link rel="icon" href="img/logo.jpg">
 <!-- Шрифты лежат рядом с сайтом (папка fonts), без Google: в РФ Google Fonts иногда тормозит и страница висит пустой -->
 <link rel="preload" href="fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
@@ -786,7 +795,7 @@ function book(msg,clean){
   curMsg=msg||HELLO;$('cmMsg').textContent=curMsg;$('cmWaV').href=wa(WA_V,curMsg);$('cmWaE').href=wa(WA_E,curMsg);$('tgNote').textContent='текст скопируется автоматически';
   const card=cm.querySelector('.cm-card');if(clean)card.insertBefore($('cmWaE'),$('cmWaV'));else card.insertBefore($('cmWaV'),$('cmWaE'));
   $('cmPh').href='tel:+'+(clean?WA_E:WA_V);
-  lastFocus=document.activeElement;cm.hidden=false;requestAnimationFrame(()=>cm.classList.add('on'));document.body.style.overflow='hidden';$('cmX').focus();
+  goal('book_open');lastFocus=document.activeElement;cm.hidden=false;requestAnimationFrame(()=>cm.classList.add('on'));document.body.style.overflow='hidden';$('cmX').focus();
 }
 function unbook(){cm.classList.remove('on');document.body.style.overflow='';setTimeout(()=>{cm.hidden=true},250);lastFocus&&lastFocus.focus()}
 /* Telegram по номеру не принимает готовый текст: копируем его, чтобы клиент просто вставил */
@@ -798,6 +807,15 @@ $('cmX').onclick=unbook;
 cm.addEventListener('click',e=>{if(e.target===cm)unbook()});
 cm.querySelectorAll('.soc').forEach(a=>a.addEventListener('click',()=>setTimeout(unbook,600)));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&!cm.hidden)unbook()});
+
+
+/* ===== Цели Метрики (все — «JavaScript-событие»):
+   book_open — открыли окно записи; wa_valeria / wa_ekaterina — нажали WhatsApp мастера; tg_click — Telegram;
+   call_click — звонок; calc_book — «Записаться на эту сумму»; tint_book — «Хочу такую» в примерке ===== */
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a,button');if(!a)return;
+ if(a.id==='cmWaV')goal('wa_valeria');else if(a.id==='cmWaE')goal('wa_ekaterina');else if(a.id==='cmTg')goal('tg_click');
+ else if((a.getAttribute('href')||'').startsWith('tel:'))goal('call_click');
+ if(a.id==='calcBook')goal('calc_book');if(a.id==='tintBook')goal('tint_book')});
 
 /* Живая карта Яндекса подгружается только по кнопке */
 const map=$('map');
